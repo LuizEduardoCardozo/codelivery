@@ -9,8 +9,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/LuizEduardoCardozo/codelivery/simulator/entities"
-	"github.com/LuizEduardoCardozo/codelivery/simulator/queue"
+	"codelivery/simulator/entities"
+	"codelivery/simulator/queue"
+
 	"github.com/joho/godotenv"
 	"github.com/streadway/amqp"
 )
@@ -25,10 +26,7 @@ const ONE_SECOND time.Duration = 1 * time.Second
 
 // Loads the .env file
 func init() {
-	err := godotenv.Load()
-	if err != nil {
-		panic("cannot load .env file")
-	}
+	godotenv.Load()
 }
 
 func SimulatorWorker(order entities.Order, channel *amqp.Channel) {
