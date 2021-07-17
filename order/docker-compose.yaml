@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  orders-db:
+    image: mysql:5.7
+    container_name: orders-db
+    restart: always
+    tty: true
+    ports:
+      - 3306:3306
+    volumes:
+      - ./.docker/dbdata:/var/lib/mysql
+      - ./.docker/mysql:/docker-entrypoint-initdb.d
+    env_file:
+      - .env
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
