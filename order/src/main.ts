@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import * as handleBars from 'express-handlebars';
 import * as handleBarsHelpers from 'handlebars-helpers';
-import path from 'path';
+import * as path from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
 
