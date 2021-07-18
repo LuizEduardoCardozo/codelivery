@@ -14,7 +14,7 @@ import { OrderModule } from './order/order.module';
       database: 'micro_mapping',
       entities: [Order],
     }),
-    //OrderModule,
+    OrderModule,
   ],
   controllers: [],
   providers: [],
