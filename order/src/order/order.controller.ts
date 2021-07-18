@@ -22,11 +22,4 @@ export class OrderController {
     });
     return { data: orders };
   }
-
-  @Get('/drivers')
-  @Render('order/index')
-  async drivers() {
-    const drivers = await this.driverService.getDrivers();
-    return { data: drivers };
-  }
 }
