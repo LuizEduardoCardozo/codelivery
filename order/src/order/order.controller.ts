@@ -22,4 +22,11 @@ export class OrderController {
     });
     return { data: orders };
   }
+
+  @Get('/create')
+  @Render('order/create')
+  async create() {
+    const drivers = await this.driverService.getDrivers();
+    return { drivers };
+  }
 }
