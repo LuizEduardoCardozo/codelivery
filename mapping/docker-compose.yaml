@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  front:
+    container_name: "mapping_front_end"
+    build:
+      context: ./front
+    networks:
+      - app-network
+  back:
+    container_name: "mapping_back_end"
+    build:
+      context: ./back
+    networks:
+      - app-network
+  db:
+    container_name: "mapping_data_base"
+    image: mysql:5.7
+    tty: true
+    volumes:
+      - ./back/.docker/dbdata:/var/lib/mysql
+      - ./back/.docker/mysql:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
