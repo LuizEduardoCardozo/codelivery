@@ -3,9 +3,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Order } from './order.model';
 import { MappingService } from './mapping/mapping.service';
 import { NewOrderService } from './new-order/new-order.service';
+import { RabbitMQModule } from '@golevelup/nestjs-rabbitmq';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Order])],
-  providers: [MappingService, NewOrderService],
+  imports: [
+    RabbitMQModule.forRoot(RabbitMQModule, {
+      uri: 'amqp://admin:admin@localhost:5672',
+    }),
+    TypeOrmModule.forFeature([Order]),
+  ],
+  providers: [NewOrderService, MappingService],
 })
 export class OrderModule {}
