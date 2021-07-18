@@ -33,7 +33,6 @@ export class OrderController {
   @Post('')
   @Redirect('orders')
   async createOrder(@Body() { driver, location }) {
-    console.log({ driver, location });
     const [locationId, locationGeo] = location.split('/');
     const [driverId, driverName] = driver.split(',');
     const [location_lat, location_lng] = locationGeo.split(',');
