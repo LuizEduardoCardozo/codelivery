@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { OrderModule } from './order/order.module';
+import { Order } from './order/order.model';
 
 @Module({
   imports: [
@@ -12,16 +11,16 @@ import { OrderModule } from './order/order.module';
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'orders-db',
+      host: 'localhost',
       port: 3306,
       username: 'root',
       password: 'root',
       database: 'micro_orders',
-      entities: [OrderModule],
+      entities: [Order],
     }),
     OrderModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
