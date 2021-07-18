@@ -23,6 +23,6 @@ import { ChangeStatusOrderService } from './change-status-order/change-status-or
     OrderModule,
   ],
   controllers: [],
-  providers: [OrderSubscriberService, ChangeStatusOrderService],
+  providers: [],
 })
 export class AppModule {}
