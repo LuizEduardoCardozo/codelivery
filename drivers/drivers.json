@@ -1,5 +1,5 @@
 [
-    "Eduardo",
-    "Lucas",
-    "Matheus"
+    { "name": "Eduardo", "uuid": "d43b7127-01cf-45c4-986e-98a0085658ac" },
+    { "name": "Lucas", "uuid": "b8185fae-e77e-11eb-ba80-0242ac130004" },
+    { "name": "Matheus", "uuid": "c87a40f6-e77e-11eb-ba80-0242ac130004" }
 ]
