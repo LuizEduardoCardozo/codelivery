@@ -21,7 +21,7 @@ export class OrderSubscriberService
 
   async afterInsert(event: InsertEvent<Order>) {
     const order = event.entity;
-    await this.amqpConnection.publish('amqp.direct', 'orders.new', {
+    await this.amqpConnection.publish('amq.direct', 'orders.new', {
       id: order.id,
       driver_name: order.driver_name,
       location_id: order.location_id,
