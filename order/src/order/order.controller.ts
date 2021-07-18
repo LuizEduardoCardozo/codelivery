@@ -1,4 +1,4 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Body, Controller, Get, Post, Redirect, Render } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DriverHttpService } from 'src/driver-http/driver-http.service';
 import { Repository } from 'typeorm';
@@ -28,5 +28,21 @@ export class OrderController {
   async create() {
     const drivers = await this.driverService.getDrivers();
     return { drivers };
+  }
+
+  @Post('')
+  @Redirect('orders')
+  async createOrder(@Body() { driver, location }) {
+    console.log({ driver, location });
+    const [locationId, locationGeo] = location.split('/');
+    const [driverId, driverName] = driver.split(',');
+    const [location_lat, location_lng] = locationGeo.split(',');
+    const order = this.orderRepository.create({
+      driver_id: driverId,
+      driver_name: driverName,
+      location_geo: [location_lat, location_lng],
+      location_id: locationId,
+    });
+    await this.orderRepository.save(order);
   }
 }
