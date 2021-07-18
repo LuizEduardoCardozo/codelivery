@@ -28,7 +28,7 @@ export class MappingService {
 
     if (lat === 0 && lng === 0) {
       const order = await this.orderRepository.findOne(message.order);
-      order.order_status = OrderStatus.DONE;
+      order.status = OrderStatus.DONE;
       await this.orderRepository.save(order);
       await this.amqConnection.publish('amq.direct', 'orders.change-status', {
         id: order.id,
