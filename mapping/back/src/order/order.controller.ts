@@ -10,7 +10,7 @@ export class OrderController {
     private readonly orderRepository: Repository<Order>,
   ) {}
 
-  @Get('id')
+  @Get(':id')
   async showById(@Param('id') id: string) {
     return this.orderRepository.findOne(id);
   }
