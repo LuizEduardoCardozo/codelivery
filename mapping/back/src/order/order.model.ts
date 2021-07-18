@@ -20,5 +20,5 @@ export class Order {
   location_geo: number[];
 
   @Column()
-  order_status: OrderStatus = OrderStatus.PENDING;
+  status: OrderStatus = OrderStatus.PENDING;
 }
